@@ -8,7 +8,7 @@
     "rules": {
         "semi": "off",
         "object-curly-spacing": "off",
-        "indent": ["error", 4],
+        "indent": ["error", 4, {"SwitchCase": 1}],
         "arrow-parens": "off",
         "require-jsdoc": "off",
         "eol-last": "off",
