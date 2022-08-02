@@ -37,3 +37,46 @@ export function nextSelector(key, { col, row }) {
     return `[data-id="${row}:${col}"]`
 
 }
+
+export function storage(key, data) {
+    if (!data) {
+        return JSON.parse(localStorage.getItem(key))
+    }
+
+    return localStorage.setItem(key, JSON.stringify(data))
+}
+
+export function isEqual(a, b) {
+    if (typeof a === 'object' || b === 'object') {
+        return JSON.stringify(a) === JSON.stringify(b)
+    }
+
+    return a === b
+}
+
+export function camelCaseToKebabCase(str) {
+    return str.replace(
+        /[A-Z]+(?![a-z])|[A-Z]/g,
+        ($, ofs) => (
+            ofs ? '-' : ''
+        ) + $.toLowerCase())
+}
+
+export function toInlineStyles(styles = {}) {
+    return Object.keys(styles)
+        .map(key => `${camelCaseToKebabCase(key)}: ${styles[key]}`)
+        .join('; ')
+}
+
+export function debounce(fn, wait) {
+    let timeout
+
+    return function(...args) {
+        const later = () => {
+            clearTimeout(timeout)
+            fn(...args)
+        }
+        clearTimeout(timeout)
+        timeout = setTimeout(later, wait)
+    }
+}
