@@ -15,7 +15,9 @@
         "padded-blocks": "off",
         "no-trailing-spaces": "off",
         "linebreak-style": "off",
-        "operator-linebreak": "off"
+        "operator-linebreak": "off",
+        "max-len": ["error", { "code": 100 }],
+        "comma-dangle": "off"
     },
     "extends": [
         "eslint:recommended",
