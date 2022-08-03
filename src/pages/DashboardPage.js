@@ -1,6 +1,6 @@
-import { createRecordsTable } from '@/pages/dushboard.functions'
+import { createRecordsTable } from '@/shared/dushboard.functions'
 import { $ } from '@core/dom'
-import { Page } from '@core/Page'
+import { Page } from '@core/page/Page'
 
 export class DashboardPage extends Page {
 
