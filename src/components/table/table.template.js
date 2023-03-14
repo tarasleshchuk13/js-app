@@ -4,7 +4,7 @@ import { toInlineStyles } from '@core/utils'
 
 const CODES = {
     A: 65,
-    Z: 90,
+    Z: 90
 }
 
 const DEFAULT_WIDTH = 120
@@ -29,9 +29,9 @@ function toCell(state, row) {
         const data = state.dataState[id]
         const styles = toInlineStyles({
             ...defaultStyles,
-            ...state.stylesState[id],
+            ...state.stylesState[id]
         })
-
+        
         return `
             <div 
                 class="cell" 
@@ -65,7 +65,7 @@ function createRow(content, number, rowState) {
         ? '<div class="row-resize" data-resize="row"></div>'
         : ''
     const height = getHeight(rowState, number)
-
+    
     return `
         <div 
             class="row" 
@@ -89,7 +89,7 @@ function toChar(_, index) {
 function withWidthFrom(state) {
     return function(col, index) {
         return {
-            col, index, width: getWidth(state.colState, index),
+            col, index, width: getWidth(state.colState, index)
         }
     }
 }
@@ -97,24 +97,24 @@ function withWidthFrom(state) {
 export function createTable(rowsCount = 15, state = {}) {
     const colsCount = CODES.Z - CODES.A + 1
     const rows = []
-
+    
     const cols = new Array(colsCount)
         .fill(null)
         .map(toChar)
         .map(withWidthFrom(state))
         .map(toColumn)
         .join('')
-
+    
     rows.push(createRow(cols, null, {}))
-
+    
     for (let row = 0; row < rowsCount; row++) {
         const cells = new Array(colsCount)
             .fill(null)
             .map(toCell(state, row))
             .join('')
-
+        
         rows.push(createRow(cells, row + 1, state.rowState))
     }
-
+    
     return rows.join('')
 }

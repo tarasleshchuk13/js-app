@@ -6,7 +6,7 @@ export function range(start, end) {
     if (start > end) {
         [end, start] = [start, end]
     }
-
+    
     return new Array(end - start + 1)
         .fill(null)
         .map((_, i) => start + i)
@@ -14,7 +14,7 @@ export function range(start, end) {
 
 export function nextSelector(key, { col, row }) {
     const MIN_VALUE = 0
-
+    
     switch (key) {
         case 'Enter':
         case 'ArrowDown':
@@ -33,16 +33,16 @@ export function nextSelector(key, { col, row }) {
         default:
             break
     }
-
+    
     return `[data-id="${row}:${col}"]`
-
+    
 }
 
 export function storage(key, data) {
     if (!data) {
         return JSON.parse(localStorage.getItem(key))
     }
-
+    
     return localStorage.setItem(key, JSON.stringify(data))
 }
 
@@ -50,7 +50,7 @@ export function isEqual(a, b) {
     if (typeof a === 'object' || b === 'object') {
         return JSON.stringify(a) === JSON.stringify(b)
     }
-
+    
     return a === b
 }
 
@@ -70,7 +70,7 @@ export function toInlineStyles(styles = {}) {
 
 export function debounce(fn, wait) {
     let timeout
-
+    
     return function(...args) {
         const later = () => {
             clearTimeout(timeout)

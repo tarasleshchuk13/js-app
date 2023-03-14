@@ -3,7 +3,7 @@ function toButton(button) {
             data-type="button"
             data-value='${JSON.stringify(button.value)}'
         `
-
+    
     return `
         <div 
             class="button ${button.active ? 'active' : ''}"
@@ -22,17 +22,17 @@ export function createToolbar(state) {
         {
             icon: 'format_align_left',
             active: state['textAlign'] === 'left',
-            value: { textAlign: 'left' },
+            value: { textAlign: 'left' }
         },
         {
             icon: 'format_align_center',
             active: state['textAlign'] === 'center',
-            value: { textAlign: 'center' },
+            value: { textAlign: 'center' }
         },
         {
             icon: 'format_align_right',
             active: state['textAlign'] === 'right',
-            value: { textAlign: 'right' },
+            value: { textAlign: 'right' }
         },
         {
             icon: 'format_bold',
@@ -40,8 +40,8 @@ export function createToolbar(state) {
             value: {
                 fontWeight: state['fontWeight'] === 'bold'
                     ? 'normal'
-                    : 'bold',
-            },
+                    : 'bold'
+            }
         },
         {
             icon: 'format_italic',
@@ -49,8 +49,8 @@ export function createToolbar(state) {
             value: {
                 fontStyle: state['fontStyle'] === 'italic'
                     ? 'normal'
-                    : 'italic',
-            },
+                    : 'italic'
+            }
         },
         {
             icon: 'format_underlined',
@@ -58,10 +58,10 @@ export function createToolbar(state) {
             value: {
                 textDecoration: state['textDecoration'] === 'underline'
                     ? 'none'
-                    : 'underline',
-            },
-        },
+                    : 'underline'
+            }
+        }
     ]
-
+    
     return buttons.map(toButton).join('')
 }
